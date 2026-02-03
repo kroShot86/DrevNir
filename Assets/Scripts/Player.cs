@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
     }
-
+    //
     private void HandleMovement()
     {
         Vector2 inputVector = GameInput.Instance.GetMovementVector();
