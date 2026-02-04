@@ -7,7 +7,7 @@ public class PlayerVisual : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
-    private int num_anim = 0;
+    private int num_anim = -2;
 
     private void Awake()
     {
@@ -33,22 +33,36 @@ public class PlayerVisual : MonoBehaviour
         else if ((inputVector.y < -0.1 && (Mathf.Abs(inputVector.x) > 0.1)) || (inputVector.y < -0.1))
         {
             spriteRenderer.flipX = false;
-            num_anim = 2; //вниз
+            num_anim = 2; // вниз
         }
         else if (inputVector.x < -0.1)
         {
             spriteRenderer.flipX = true;
-            num_anim = 3; //лево
+            num_anim = 3; // лево
         }
         else if (inputVector.x > 0.1)
         {
             spriteRenderer.flipX = false;
-            num_anim = 3; //вправо
+            num_anim = 3; // вправо
         }
-        else
+        else // на месте
         {
-            spriteRenderer.flipX = false;
-            num_anim = 0; // на месте
+
+            if (num_anim == 1)
+            {
+                spriteRenderer.flipX = false;
+                num_anim = -1; // вверх
+            }
+            else if (num_anim == 2)
+            {
+                spriteRenderer.flipX = false;
+                num_anim = -2; // вниз
+            }
+            else if (num_anim == 3)
+            {
+                num_anim = -3; // лево/право
+            }
+
         }
     }
 
