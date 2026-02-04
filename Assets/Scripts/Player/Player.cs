@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
     public static Player Instance {  get; private set; }
 
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private float speed;
     private Rigidbody2D rb;
 
     private void Awake()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7497342912665241371}
   - component: {fileID: 5807415917574459711}
   - component: {fileID: 4217761245554174804}
+  - component: {fileID: -5579835456207833877}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.57698226, y: -0.07491204, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,6 +118,22 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0010747175, y: 0.0077854944}
-  m_Size: {x: 0.17453341, y: 0.051792283}
+  m_Offset: {x: 0.0010747234, y: 0.032292407}
+  m_Size: {x: 0.17453356, y: 0.08887758}
   m_Direction: 1
+--- !u!114 &-5579835456207833877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922752683482306831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0352a4d56abd42ad2fc69deb72448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.14901604, y: 0.078616776, z: 4}
+  m_Center: {x: 0.0008824393, y: 0.037113566, z: 0}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
