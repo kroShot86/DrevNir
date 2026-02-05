@@ -42,7 +42,7 @@ public class MobAi : MonoBehaviour
         switch (state)
         {
             default:
-                case State.Idle:
+            case State.Idle:
                 break;
             case State.Patroll:
                 currentTimePatrull -= Time.deltaTime;
@@ -62,10 +62,23 @@ public class MobAi : MonoBehaviour
         //startPos = transform.position;
         PatrullPos = GetPos();
         agent.SetDestination(PatrullPos);
+        ChangeAnima(transform.position, PatrullPos);
     }
 
     private Vector3 GetPos()
     {
         return (startPos + Utils.GetRandomDir() * UnityEngine.Random.Range(MinDistance, MaxDistance));
+    }
+
+    private void ChangeAnima(Vector3 currentPos, Vector3 targetPos)
+    {
+        if(currentPos.x > targetPos.x)
+        {
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 }
