@@ -222,6 +222,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: free_pixel_16_woods_6
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 99
+        width: 12
+        height: 9
+      alignment: 9
+      pivot: {x: 0.501667, y: 0.013335334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 153f497193b81134190f9ea172665110
+      internalID: -831375194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -239,6 +260,7 @@ TextureImporter:
       free_pixel_16_woods_3: -808290455
       free_pixel_16_woods_4: -70996050
       free_pixel_16_woods_5: 1370496010
+      free_pixel_16_woods_6: -831375194
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
