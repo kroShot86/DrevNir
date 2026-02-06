@@ -12,7 +12,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnDashAction;
     public event EventHandler OnInventoryAction;
 
-    private void Awake()
+    private void Awake()//
     {
         Instance = this;
         playerInputActions = new PlayerInputActions();
