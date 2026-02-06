@@ -18,12 +18,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
+        GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
     }
 
-    private void GameInput_OnPlayerAttack(object sender, System.EventArgs e)
+    private void Player_OnPlayerAttack(object sender, System.EventArgs e)
     {
-        
+        ActiveWeapon.Instance.GetActiveWeapon().Attack();
     }
 
     private void FixedUpdate()

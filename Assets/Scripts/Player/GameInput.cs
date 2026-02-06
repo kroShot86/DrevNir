@@ -22,10 +22,7 @@ public class GameInput : MonoBehaviour
 
     private void PlayerAttack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (OnPlayerAttack != null)
-        {
-            OnPlayerAttack.Invoke(this, EventArgs.Empty);
-        }
+        OnPlayerAttack?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector2 GetMovementVector()
