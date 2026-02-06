@@ -27,9 +27,9 @@ public class Player : MonoBehaviour
         GameInput.Instance.OnDashAction += GameInput_OnDashAction;
     }
 
-    private void GameInput_OnPlayerAttack(object sender, System.EventArgs e)
+    private void Player_OnPlayerAttack(object sender, System.EventArgs e)
     {
-        
+        ActiveWeapon.Instance.GetActiveWeapon().Attack();
     }
 
     private void GameInput_OnDashAction(object sender, System.EventArgs e)
