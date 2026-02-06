@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -9123602969638812589}
   - component: {fileID: 8202738693309346285}
   - component: {fileID: 5579802237412619665}
+  - component: {fileID: 398760486026850940}
   m_Layer: 0
   m_Name: Slime (2)
   m_TagString: Untagged
@@ -141,7 +142,7 @@ MonoBehaviour:
   isChasingEnemy: 1
   chasingDistance: 20
   chasingSpeedMultiplayer: 2
-  isAttackingEnemy: 0
+  isAttackingEnemy: 1
 --- !u!114 &8202738693309346285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +206,21 @@ PolygonCollider2D:
       - {x: 2.1829376, y: -1.2202448}
       - {x: 2.2414045, y: 0.30069917}
   m_UseDelaunayMesh: 0
+--- !u!114 &398760486026850940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3360324463194107408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d88d05e607a164b8cb616dad15fec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobAi: {fileID: -9123602969638812589}
+  damageAmount: 10
+  attackCooldown: 1
 --- !u!1 &6908026389971041583
 GameObject:
   m_ObjectHideFlags: 0
