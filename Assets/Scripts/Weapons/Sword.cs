@@ -14,6 +14,11 @@ public class Sword : MonoBehaviour
     private void Awake()
     {
         polygonCollider2D = GetComponent<PolygonCollider2D>();
+        if (polygonCollider2D == null)
+        {
+            polygonCollider2D = gameObject.AddComponent<PolygonCollider2D>();
+            polygonCollider2D.isTrigger = true; 
+        }
     }
 
     private void Start()
@@ -25,25 +30,30 @@ public class Sword : MonoBehaviour
     {
         AttackColiderTurnOffOn();
         OnSwordSwing?.Invoke(this, EventArgs.Empty);
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.transform.TryGetComponent(out EnemyEnity enemyEntity))
         {
-            enemyEntity.TakeDamage(5);
+            enemyEntity.TakeDamage(damage);
         }
     }
 
     public void AttackColiderTurnOff()
     {
-        polygonCollider2D.enabled = false;
+        if (polygonCollider2D != null)
+        {
+            polygonCollider2D.enabled = false;
+        }
     }
 
     public void AttackColiderTurnOn()
     {
-        polygonCollider2D.enabled = true;
+        if (polygonCollider2D != null)
+        {
+            polygonCollider2D.enabled = true;
+        }
     }
 
     public void AttackColiderTurnOffOn()
