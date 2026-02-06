@@ -6,7 +6,12 @@ public class EnemyEnity : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     private int currentHealth;
+    private PolygonCollider2D polygonCollider2D;
 
+    private void Awake()
+    {
+        polygonCollider2D = GetComponent<PolygonCollider2D>();
+    }
     private void Start()
     {
         currentHealth = maxHealth;
@@ -25,5 +30,15 @@ public class EnemyEnity : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void PolygonCollider2DTurnOff()
+    {
+        polygonCollider2D.enabled = false;
+    }
+
+    public void PolygonCollider2DTurnOn()
+    {
+        polygonCollider2D.enabled = true;
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8202738693309346285}
   - component: {fileID: 5579802237412619665}
   m_Layer: 0
-  m_Name: Slime (1)
+  m_Name: Slime (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3360324463194107408}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.944059, y: 5.3285255, z: 0}
+  m_LocalPosition: {x: 10.342398, y: 1.6750565, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartState: 1
-  MaxDistance: 30
-  MinDistance: 5
+  MaxDistance: 5
+  MinDistance: 1
   MaxTimePatrull: 8
   isChasingEnemy: 1
   chasingDistance: 20
@@ -162,7 +162,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3360324463194107408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -325,3 +325,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobAi: {fileID: -9123602969638812589}
+  enemyEnity: {fileID: 8202738693309346285}
