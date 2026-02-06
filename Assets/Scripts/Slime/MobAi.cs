@@ -29,7 +29,7 @@ public class MobAi : MonoBehaviour
     private float chasingSpeed;
 
     [SerializeField] private bool isAttackingEnemy = false;
-    private float AttackingDistance = 2;
+    private float AttackingDistance = 4;
 
     public event EventHandler OnEnemyAttack;
 
