@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6804201838897288932
 Transform:
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.649, y: 0.709, z: 1}
-  m_LocalScale: {x: 25, y: 25, z: 5}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,8 +118,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0010113852, y: 0.04658919}
-  m_Size: {x: 0.3441611, y: 0.26926932}
+  m_Offset: {x: 0.035274018, y: -0.13483532}
+  m_Size: {x: 1.5778525, y: 0.6321212}
   m_Direction: 1
 --- !u!114 &5364553214831479640
 MonoBehaviour:
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa0352a4d56abd42ad2fc69deb72448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 0.3233375, y: 0.25658447, z: 3.9999998}
-  m_Center: {x: 0.0014974177, y: 0.05256412, z: 0.00000011920929}
+  m_Size: {x: 1.6779761, y: 1.0709801, z: 3.9999983}
+  m_Center: {x: 0.025687575, y: 0.12916583, z: 0.000000834465}
   m_Area: 1
   m_AffectedAgents: ffffffff
