@@ -16,3 +16,7 @@
 *.log
 *.tmp
 *.pidb.meta
+UpgradeLog2.htm
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/settings.json
