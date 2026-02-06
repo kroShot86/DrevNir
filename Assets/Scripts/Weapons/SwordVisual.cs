@@ -18,8 +18,18 @@ public class SwordVisual : MonoBehaviour
         sword.OnSwordSwing += Sword_OnSwordSwing;
     }
 
-    private void Sword_OnSwordSwing(object sender, System.EventArgs e)
+    public void Sword_OnSwordSwing(object sender, System.EventArgs e)
     {
         animator.SetTrigger(ATTACK);
+    }
+
+    public void TriggerEndAnimation()
+    {
+        sword.AttackColiderTurnOff();
+    }
+
+    public void TriggerBeginAnimation()
+    {
+        sword.AttackColiderTurnOn();
     }
 }
