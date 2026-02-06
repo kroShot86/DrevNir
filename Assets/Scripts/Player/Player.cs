@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     private float dashTimer;
     private float dashCooldownTimer;
     private Vector2 dashDir;
+    
+    private Vector2 lastMoveDir = Vector2.right; 
 
     private void Awake()
     {
@@ -23,13 +25,15 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
+        GameInput.Instance.OnPlayerAttack += Player_OnPlayerAttack;
         GameInput.Instance.OnDashAction += GameInput_OnDashAction;
     }
 
     private void Player_OnPlayerAttack(object sender, System.EventArgs e)
     {
-        ActiveWeapon.Instance.GetActiveWeapon().Attack();
+
+        if (ActiveWeapon.Instance != null)
+             ActiveWeapon.Instance.GetActiveWeapon().Attack();
     }
 
     private void GameInput_OnDashAction(object sender, System.EventArgs e)
@@ -41,8 +45,15 @@ public class Player : MonoBehaviour
             dashCooldownTimer = dashCooldown;
             
             Vector2 moveDir = GameInput.Instance.GetMovementVector().normalized;
-            if (moveDir == Vector2.zero) dashDir = Vector2.right; 
-            else dashDir = moveDir;
+            
+            if (moveDir == Vector2.zero) 
+            {
+                dashDir = lastMoveDir; 
+            }
+            else 
+            {
+                dashDir = moveDir;
+            }
         }
     }
 
@@ -51,6 +62,11 @@ public class Player : MonoBehaviour
         if (dashCooldownTimer > 0)
         {
             dashCooldownTimer -= Time.deltaTime;
+        }
+        Vector2 inputVector = GameInput.Instance.GetMovementVector().normalized;
+        if (inputVector != Vector2.zero)
+        {
+            lastMoveDir = inputVector;
         }
     }
 

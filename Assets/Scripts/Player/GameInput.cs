@@ -18,14 +18,16 @@ public class GameInput : MonoBehaviour
         playerInputActions = new PlayerInputActions();
         playerInputActions.Enable();
 
-        playerInputActions.Combat.Attack.started += PlayerAttack_started;
         playerInputActions.Player.Dash.performed += Dash_performed;
         playerInputActions.Player.Inventory.performed += Inventory_performed;
     }
 
-    private void PlayerAttack_started(InputAction.CallbackContext obj)
+    private void Update()
     {
-        OnPlayerAttack?.Invoke(this, EventArgs.Empty);
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnPlayerAttack?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void Dash_performed(InputAction.CallbackContext obj)
@@ -40,6 +42,7 @@ public class GameInput : MonoBehaviour
 
     public Vector2 GetMovementVector()
     {
+        if (playerInputActions == null) return Vector2.zero;
         return playerInputActions.Player.Move.ReadValue<Vector2>();
     }
 }
