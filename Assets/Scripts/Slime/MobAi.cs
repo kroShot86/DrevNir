@@ -5,17 +5,19 @@ using UnityEngine;
 using UnityEngine.AI;
 using KnightAdventure.Utils;
 using Unity.VisualScripting;
+using System;
 
 public class MobAi : MonoBehaviour
 {
+    
     [SerializeField] private State StartState;
     [SerializeField] private float MaxDistance;
     [SerializeField] private float MinDistance;
     [SerializeField] private float MaxTimePatrull;
 
     [SerializeField] private bool isChasingEnemy = false;
-    private float chasingDistance = 10;
-    private float chasingSpeedMultiplayer = 2;
+    [SerializeField] private float chasingDistance = 10;
+    [SerializeField] private float chasingSpeedMultiplayer = 2;
 
     private NavMeshAgent agent;
     private State currentState;
@@ -26,7 +28,13 @@ public class MobAi : MonoBehaviour
     private float patrollSpeed;
     private float chasingSpeed;
 
-    
+    [SerializeField] private bool isAttackingEnemy = false;
+    private float AttackingDistance = 2;
+
+    public event EventHandler OnEnemyAttack;
+
+    private float attackRate = 2;
+    private float nextAttackTime = 0;
 
     public bool isRunning()
     {
@@ -83,7 +91,7 @@ public class MobAi : MonoBehaviour
                     Patrull();
                     currentTimePatrull = MaxTimePatrull;
                 }
-
+                CheckCurrentState();
                 break;
 
             case State.Chasing:
@@ -95,6 +103,8 @@ public class MobAi : MonoBehaviour
                 break;
 
             case State.Attacking:
+                CheckCurrentState();
+                AttackingTarget();
                 break;
 
             default:
@@ -102,6 +112,16 @@ public class MobAi : MonoBehaviour
                 break;
 
         }
+    }
+
+    public float GetPatrollAnimationSpeed()
+    {
+        return agent.speed / patrollSpeed;
+    }
+
+    private void AttackingTarget()
+    {
+        OnEnemyAttack?.Invoke(this, EventArgs.Empty);
     }
 
     private void CheckCurrentState()
@@ -117,6 +137,14 @@ public class MobAi : MonoBehaviour
             }
         }
 
+        if(isAttackingEnemy)
+        {
+            if(distanceToPlayer <= AttackingDistance)
+            {
+                newState = State.Attacking;
+            }
+        }
+
         if(newState != currentState)
         {
             if(newState == State.Chasing)
@@ -129,6 +157,10 @@ public class MobAi : MonoBehaviour
                 currentTimePatrull = 0;
                 agent.speed = patrollSpeed;
             }
+            else if(newState == State.Attacking)
+            {
+                agent.ResetPath();
+            }
 
             currentState = newState;
         }
@@ -139,7 +171,12 @@ public class MobAi : MonoBehaviour
 
     private void ChasingTarget()
     {
-        agent.SetDestination(Player.Instance.transform.position);
+        if(Time.time > nextAttackTime)
+        {
+            agent.SetDestination(Player.Instance.transform.position);
+            nextAttackTime = Time.time + attackRate;
+        }
+        
     }
 
 
