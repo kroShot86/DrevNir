@@ -29,12 +29,16 @@ public class MobAi : MonoBehaviour
     private float chasingSpeed;
 
     [SerializeField] private bool isAttackingEnemy = false;
-    private float AttackingDistance = 2;
+    private float AttackingDistance = 4;
 
     public event EventHandler OnEnemyAttack;
 
     private float attackRate = 2;
     private float nextAttackTime = 0;
+
+    private float nextCheckDirectionTime = 0;
+    private float checkDirectionDuration = 0.1f;
+    private Vector3 lastPosition;
 
     public bool isRunning()
     {
@@ -76,6 +80,7 @@ public class MobAi : MonoBehaviour
     private void Update()
     {
         StateHandler();
+        MovementDirectionHandler();
     }
 
     private void StateHandler()
@@ -111,6 +116,24 @@ public class MobAi : MonoBehaviour
             case State.Idle:
                 break;
 
+        }
+    }
+
+    private void MovementDirectionHandler()
+    {
+        if(Time.time > nextAttackTime)
+        {
+            if(isRunning())
+            {
+                ChangeFacingDirection(lastPosition, transform.position);
+            }
+            else if(currentState == State.Attacking)
+            {
+                ChangeFacingDirection(transform.position, Player.Instance.transform.position);
+            }
+
+            lastPosition = transform.position;
+            nextAttackTime = Time.time + checkDirectionDuration;
         }
     }
 
@@ -185,7 +208,7 @@ public class MobAi : MonoBehaviour
         //startPos = transform.position;
         PatrullPos = GetPos();
         agent.SetDestination(PatrullPos);
-        ChangeAnima(transform.position, PatrullPos);
+        //ChangeAnima(transform.position, PatrullPos);
     }
 
     private Vector3 GetPos()
@@ -196,6 +219,18 @@ public class MobAi : MonoBehaviour
     private void ChangeAnima(Vector3 currentPos, Vector3 targetPos)
     {
         if(currentPos.x > targetPos.x)
+        {
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
+
+    private void ChangeFacingDirection(Vector3 sourcePosition, Vector3 targetPosition)
+    {
+        if(sourcePosition.x > targetPosition.x)
         {
             transform.rotation = Quaternion.Euler(0, -180, 0);
         }
